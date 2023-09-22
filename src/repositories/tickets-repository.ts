@@ -51,7 +51,7 @@ async function postTicket(userId: number, ticketTypeId: number) {
 
   const ticketType = await prisma.ticketType.findUnique({
     where: {
-      id: ticketTypeId,
+      id: Number(ticketTypeId),
     },
   });
 
