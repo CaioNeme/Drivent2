@@ -3,7 +3,7 @@ import httpStatus from 'http-status';
 import { ApplicationError, RequestError } from '@/protocols';
 
 export function handleApplicationErrors(
-  err: RequestError | ApplicationError | Error,
+  err: RequestError | ApplicationError | Error | any,
   _req: Request,
   res: Response,
   next: NextFunction,
@@ -64,6 +64,10 @@ export function handleApplicationErrors(
 
   if (err.name === 'ticketTypeNotFoundError') {
     return res.status(httpStatus.BAD_REQUEST).send(err.message);
+  }
+
+  if (err.code === 'P2002') {
+    return res.status(httpStatus.CONFLICT).send('Ticket already reserved');
   }
 
   if (err.hasOwnProperty('status') && err.name === 'RequestError') {
