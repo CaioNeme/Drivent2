@@ -1,3 +1,5 @@
+import { type } from 'os';
+
 export type ApplicationError = {
   name: string;
   message: string;
@@ -53,4 +55,8 @@ export type TicketPerUser = {
   };
   createdAt: Date;
   updatedAt: Date;
+};
+
+export type TicketTypeId = {
+  ticketTypeId: string;
 };

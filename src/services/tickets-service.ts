@@ -10,7 +10,9 @@ async function getAllTickets(userId: number) {
   return tickets;
 }
 async function postTicket(userId: number, ticketTypeId: number) {
-  if (!ticketTypeId) throw ticketTypeNotFoundError();
+  if (!ticketTypeId) {
+    throw ticketTypeNotFoundError();
+  }
   const resp = await ticketsRepository.postTicket(userId, ticketTypeId);
   return resp;
 }

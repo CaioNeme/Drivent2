@@ -47,7 +47,9 @@ async function postTicket(userId: number, ticketTypeId: number) {
     },
   });
 
-  if (!enrollments) throw enrollmentNotFoundError();
+  if (!enrollments) {
+    throw enrollmentNotFoundError();
+  }
 
   const ticketType = await prisma.ticketType.findUnique({
     where: {
