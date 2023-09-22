@@ -1,16 +1,17 @@
-import { Ticket } from '@/protocols';
+import { ticketTypeNotFoundError } from '@/errors';
 import ticketsRepository from '@/repositories/tickets-repository';
 
 async function getAllTypeTickets() {
   const types = await ticketsRepository.getAllTypeTickets();
   return types;
 }
-async function getAllTickets() {
-  const tickets = await ticketsRepository.getAllTickets();
+async function getAllTickets(userId: number) {
+  const tickets = await ticketsRepository.getAllTickets(userId);
   return tickets;
 }
-async function postTicket(ticketTypeId: number) {
-  const resp = await ticketsRepository.postTicket(ticketTypeId);
+async function postTicket(userId: number, ticketTypeId: number) {
+  if (!ticketTypeId) throw ticketTypeNotFoundError();
+  const resp = await ticketsRepository.postTicket(userId, ticketTypeId);
   return resp;
 }
 
