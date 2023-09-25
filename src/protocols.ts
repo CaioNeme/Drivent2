@@ -1,8 +1,7 @@
-import { type } from 'os';
-
 export type ApplicationError = {
   name: string;
   message: string;
+  code?: string;
 };
 
 export type RequestError = {
@@ -11,6 +10,7 @@ export type RequestError = {
   statusText: string;
   name: string;
   message: string;
+  code?: string;
 };
 
 export type ViaCEPAddressError = {
