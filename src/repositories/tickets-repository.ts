@@ -32,7 +32,23 @@ async function getAllTickets(userId: number) {
   // console.log(tickets);
   // console.log(ticketType);
 
-  const resp = { ...ticket, ticketType };
+  const resp = {
+    id: ticket.id,
+    status: ticket.status,
+    ticketTypeId: ticket.ticketTypeId,
+    enrollmentId: ticket.enrollmentId,
+    TicketType: {
+      id: ticketType.id,
+      name: ticketType.name,
+      price: ticketType.price,
+      isRemote: ticketType.isRemote,
+      includesHotel: ticketType.includesHotel,
+      createdAt: ticketType.createdAt,
+      updatedAt: ticketType.updatedAt,
+    },
+    createdAt: ticket.createdAt,
+    updatedAt: ticket.updatedAt,
+  };
 
   return resp;
 }
@@ -64,8 +80,23 @@ async function postTicket(userId: number, ticketTypeId: number) {
       status: 'RESERVED',
     },
   });
-
-  const resp = { ...ticket, ticketType };
+  const resp = {
+    id: ticket.id,
+    status: ticket.status,
+    ticketTypeId: ticket.ticketTypeId,
+    enrollmentId: ticket.enrollmentId,
+    TicketType: {
+      id: ticketType.id,
+      name: ticketType.name,
+      price: ticketType.price,
+      isRemote: ticketType.isRemote,
+      includesHotel: ticketType.includesHotel,
+      createdAt: ticketType.createdAt,
+      updatedAt: ticketType.updatedAt,
+    },
+    createdAt: ticket.createdAt,
+    updatedAt: ticket.updatedAt,
+  };
 
   return resp;
 }
